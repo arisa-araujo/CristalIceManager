@@ -1,21 +1,48 @@
-package model;
+package com.cristalice.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "produtos")
 public class Produto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String nome;
-    private double preco;
-    private int quantidade;
+    private Double preco;
+    private Integer quantidadeDisponivel;
 
-    public Produto(String nome, double preco, int quantidade) {
+    // Getters e Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
         this.preco = preco;
-        this.quantidade = quantidade;
     }
 
-    public void atualizarEstoque(int quantidade) {
-        this.quantidade += quantidade;
+    public Integer getQuantidadeDisponivel() {
+        return quantidadeDisponivel;
     }
 
-    public double calcularPrecoTotal(int quantidade) {
-        return this.preco * quantidade;
+    public void setQuantidadeDisponivel(Integer quantidadeDisponivel) {
+        this.quantidadeDisponivel = quantidadeDisponivel;
     }
 }
